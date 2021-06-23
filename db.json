@@ -29,6 +29,24 @@
       "email": "asdtest@gmail.com",
       "password": "asd123",
       "id": 5
+    },
+    {
+      "username": "asd",
+      "email": "asdasd@asd.com",
+      "password": "asd1",
+      "id": 6
+    },
+    {
+      "username": "asdtest",
+      "email": "asdtest22@gmail.com",
+      "password": "asdpassword",
+      "id": 7
+    },
+    {
+      "username": "asdtest",
+      "email": "asdtest@asd.com",
+      "password": "asdasdasd",
+      "id": 8
     }
   ]
 }

@@ -39,9 +39,13 @@ export default function signUp() {
 
     const data = await res.json()
 
-    setAccounts([...accounts, data])
+    setAccounts([...accounts, account])
     alert('Account created!')
     switches()
+  }
+
+  const checkAccount = () => {
+    
   }
 
   return (
