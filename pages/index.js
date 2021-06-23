@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import formStyles from '../styles/Form.module.css'
 import Signup from '../components/Signup'
 import Signin from '../components/Signin'
-import Profile
+import Profile from '../components/Profile'
 import { useRouter } from 'next/router'
 
 function Redirect({ to }) {
@@ -17,6 +17,7 @@ function Redirect({ to }) {
 }
 
 export default function signUp() {
+  const [profileInfo, setProfileInfo] = useState([])
   const [redirectCheck, setRedirectCheck] = useState(false)
   const [accounts, setAccounts] = useState([])
   const [switchPage, setSwitchPage] = useState(false)
@@ -31,13 +32,14 @@ export default function signUp() {
   }, [])
 
   if (redirectCheck) {
-    return <Redirect to="/profile" />
+    return <Redirect to="/mainpage" />
   }
 
   const switches = () => {
     setSwitchPage(!switchPage)
   }
 
+  //Get accounts from server
   const fetchAccounts = async () => {
     const res = await fetch('http://localhost:5000/credentials')
     const creds = await res.json()
@@ -45,6 +47,7 @@ export default function signUp() {
     return creds
   }
 
+  //Add accounts upon sign up
   const addAccount = async (account) => {
     const res = await fetch('http://localhost:5000/credentials', {
       method: 'POST',
@@ -61,6 +64,7 @@ export default function signUp() {
     switches()
   }
 
+  //Verify account credentials upon sign in
   const checkAccount = async (account) => {
     const res = await fetch('http://localhost:5000/credentials', {
       method: 'GET',
@@ -78,7 +82,7 @@ export default function signUp() {
     } else {
       if (userAccount[0].password == account.password) {
         alert("Successfully logged in!")
-        <
+        setProfileInfo(userAccount[0])
         setRedirectCheck(true);
       } else {
         alert("Invalid password!")
@@ -90,6 +94,7 @@ export default function signUp() {
     <div className={formStyles.center}>
       <div className={formStyles.formcontainer}>
         {!switchPage ? <Signup onSignUp={addAccount} onClickAlt={switches}/> : <Signin onSignIn={checkAccount} onClickAlt={switches}/>}
+        {redirectCheck && <Profile accountInfo={profileInfo} />}
       </div>
     </div>
   )

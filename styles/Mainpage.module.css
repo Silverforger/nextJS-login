@@ -1,0 +1,14 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: auto;
+    height: 150px;
+    background-color: #000;
+    color: #FFF;
+}
+
+.profile {
+    padding-left: 50px;
+}
