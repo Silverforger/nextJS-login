@@ -40,12 +40,14 @@
 }
 
 .btn {
-    width: 90%;
-    background-color: rgb(70, 154, 250);
+    margin: auto;
+    height: 30px;
+    width: 264px;
+    background-color: #000;
     color: #FFF;
 }
 
 .btn:hover {
-    background-color: green;
+    background-color: #FFF;
     color: #000;
 }
