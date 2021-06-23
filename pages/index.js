@@ -4,7 +4,6 @@ import formStyles from '../styles/Form.module.css'
 import Signup from '../components/Signup'
 import Signin from '../components/Signin'
 
-
 export default function signUp({ accounts }) {
   // const [accounts, setAccounts] = useState([])
   
@@ -15,6 +14,7 @@ export default function signUp({ accounts }) {
   let signUpCheck = true;
   const switchPage = () => {
     signUpCheck = !signUpCheck;
+    console.log("Hey!")
   }
 
   return (

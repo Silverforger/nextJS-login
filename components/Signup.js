@@ -19,12 +19,14 @@ const Signup = ({ onSignUp, onClickAlt }) => {
 
     return (
         <div>
-            <h1 className={formStyles.headingtext}>Sign Up</h1>
-            <h2 className={formStyles.headingalt} onClick={onClickAlt}>Sign In</h2>
+            <div className={formStyles.headingflex}>
+                <h1 className={formStyles.headingtext}>Sign Up</h1>
+                <h3 className={formStyles.headingalt} onClick={onClickAlt}>Sign In?</h3>
+            </div>
             <form className={formStyles.signform} onSubmit={onSubmit}>
-                <p className={formStyles.formtext}>Username: </p><input type="text" value={username} className={formStyles.inputfield} placeholder="Enter your username..." onChange={(e) => setText(e.target.value)}/>
-                <p className={formStyles.formtext}>Email: </p><input type="text" value={email} className={formStyles.inputfield} placeholder="Enter your email..." onChange={(e) => setText(e.target.value)}/>
-                <p className={formStyles.formtext}>Password: </p><input type="text" value={password} className={formStyles.inputfield} placeholder="Enter your password..." onChange={(e) => setText(e.target.value)}/>
+                <p className={formStyles.formtext}>Username: </p><input type="text" value={username} className={formStyles.inputfield} placeholder="Enter your username..." onChange={(e) => setUsername(e.target.value)}/>
+                <p className={formStyles.formtext}>Email: </p><input type="text" value={email} className={formStyles.inputfield} placeholder="Enter your email..." onChange={(e) => setEmail(e.target.value)}/>
+                <p className={formStyles.formtext}>Password: </p><input type="text" value={password} className={formStyles.inputfield} placeholder="Enter your password..." onChange={(e) => setPassword(e.target.value)}/>
                 <input type="submit" className={formStyles.btn} value="Sign Up"/>
             </form>
         </div>
