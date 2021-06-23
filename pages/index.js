@@ -6,23 +6,22 @@ import Signin from '../components/Signin'
 
 export default function signUp({ accounts }) {
   // const [accounts, setAccounts] = useState([])
-  
+  const [switchPage, setSwitchPage] = useState(false)
   const addAccount = () => {
     
   }
 
-  let signUpCheck = true;
-  const switchPage = () => {
-    signUpCheck = !signUpCheck;
-    console.log("Hey!")
+  const switches = () => {
+    setSwitchPage(!switchPage)
   }
 
   return (
     <div className={formStyles.center}>
       <div className={formStyles.formcontainer}>
-        {signUpCheck ? <Signup onSignUp={addAccount} onClickAlt={switchPage}/> : <Signin onClickAlt={switchPage}/>}
+        {!switchPage ? <Signup onSignUp={addAccount} onClickAlt={switches}/> : <Signin onClickAlt={switches}/>}
       </div>
     </div>
+    
   )
 }
 
