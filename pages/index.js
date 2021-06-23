@@ -3,7 +3,17 @@ import { useState, useEffect } from 'react'
 import formStyles from '../styles/Form.module.css'
 import Signup from '../components/Signup'
 import Signin from '../components/Signin'
-import { useHistory } from "react-router-dom";
+import { useRouter } from 'next/router'
+
+function Redirect({to}) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(to)
+  }, [to])
+
+  return null;
+}
 
 export default function signUp() {
   const [accounts, setAccounts] = useState([])
@@ -62,21 +72,11 @@ export default function signUp() {
     } else {
       if (userAccount[0].password == account.password) {
         alert("Successfully logged in!")
-
-        goToProfile();
+        return <Redirect to="/profile/" />
       } else {
         alert("Invalid password!")
       }
     }
-  }
-
-  const goToProfile = () => {
-    const history = useHistory();
-    const handleSignIn = () => {
-      history.push("/profile")
-    }
-
-    return handleSignIn
   }
 
   return (
