@@ -1,4 +1,4 @@
-import signInStyles from '../styles/Signin.module.css'
+import signInStyles from '../styles/Form.module.css'
 
 const signIn = () => {
     return (

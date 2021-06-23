@@ -1,10 +1,11 @@
 import Head from 'next/head'
-import signUpStyles from '../styles/Signup.module.css'
+import signUpStyles from '../styles/Form.module.css'
 
 export default function signUp() {
   return (
-    <div>
-      
+    <div className={signUpStyles.form-container}>
+      <h1 className={}>Sign Up</h1>
+
     </div>
   )
 }
