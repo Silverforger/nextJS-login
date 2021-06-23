@@ -2,21 +2,25 @@
 import { useState, useEffect } from 'react'
 import formStyles from '../styles/Form.module.css'
 import Signup from '../components/Signup'
+import Signin from '../components/Signin'
 
 
 export default function signUp({ accounts }) {
-  const [accounts, setAccounts] = useState([])
+  // const [accounts, setAccounts] = useState([])
   
   const addAccount = () => {
     
   }
 
+  let signUpCheck = true;
+  const switchPage = () => {
+    signUpCheck = !signUpCheck;
+  }
+
   return (
     <div className={formStyles.center}>
       <div className={formStyles.formcontainer}>
-        <h1 className={formStyles.headingtext}>Sign Up</h1>
-        <h2 className={formStyles.headingalt}>Sign In</h2>
-        <Signup onSignUp={addAccount}/>
+        {signUpCheck ? <Signup onSignUp={addAccount} onClickAlt={switchPage}/> : <Signin onClickAlt={switchPage}/>}
       </div>
     </div>
   )

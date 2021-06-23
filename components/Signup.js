@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import formStyles from '../styles/Form.module.css'
 
-const Signup = ({ onSignUp }) => {
+const Signup = ({ onSignUp, onClickAlt }) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,6 +19,8 @@ const Signup = ({ onSignUp }) => {
 
     return (
         <div>
+            <h1 className={formStyles.headingtext}>Sign Up</h1>
+            <h2 className={formStyles.headingalt} onClick={onClickAlt}>Sign In</h2>
             <form className={formStyles.signform} onSubmit={onSubmit}>
                 <p className={formStyles.formtext}>Username: </p><input type="text" value={username} className={formStyles.inputfield} placeholder="Enter your username..." onChange={(e) => setText(e.target.value)}/>
                 <p className={formStyles.formtext}>Email: </p><input type="text" value={email} className={formStyles.inputfield} placeholder="Enter your email..." onChange={(e) => setText(e.target.value)}/>
