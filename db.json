@@ -1,10 +1,34 @@
 {
   "credentials": [
-   {
-     "id": 1,
-     "username": "admin",
-     "email": "admin@adminemail.com",
-     "password": "password"
-   }
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@adminemail.com",
+      "password": "password"
+    },
+    {
+      "username": "stas.wnt",
+      "email": "kamote22@gmail.com",
+      "password": "kamote",
+      "id": 2
+    },
+    {
+      "username": "testuser",
+      "email": "testuser@hotmail.com",
+      "password": "testuserpass",
+      "id": 3
+    },
+    {
+      "username": "stas.wnt",
+      "email": "stas.wnt@gmail.com",
+      "password": "stas.wnttttt",
+      "id": 4
+    },
+    {
+      "username": "asdasd",
+      "email": "asdtest@gmail.com",
+      "password": "asd123",
+      "id": 5
+    }
   ]
 }

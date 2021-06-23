@@ -9,7 +9,7 @@ const Signup = ({ onSignUp, onClickAlt }) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if(!username || !password ||email) {
+        if(username == "" || email == "" || password == "") {
             alert('Please fill out all the fields.')
             return
         }
