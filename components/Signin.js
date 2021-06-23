@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import formStyles from '../styles/Form.module.css'
 
-const Signin = ({ onSignUp, onClickAlt }) => {
+const Signin = ({ onSignIn, onClickAlt }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -13,7 +13,7 @@ const Signin = ({ onSignUp, onClickAlt }) => {
             return
         }
 
-        onSignUp({username, password})
+        onSignIn({username, password})
     }
 
     return (

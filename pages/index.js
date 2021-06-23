@@ -39,13 +39,34 @@ export default function signUp() {
 
     const data = await res.json()
 
+    
+
     setAccounts([...accounts, account])
     alert('Account created!')
     switches()
   }
 
-  const checkAccount = () => {
-    
+  const checkAccount = async (account) => {
+    const res = await fetch('http://localhost:5000/credentials', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      }
+    })
+
+    const accountList = await res.json()
+    console.log(accountList)
+    let userAccount = ""
+    userAccount = accountList.filter(existingAccount => existingAccount.username === account.username)
+    if (userAccount = "") {
+      alert("Invalid username!")
+    } else {
+      if (userAccount.password == account.password) {
+        alert("Noice.")
+      } else {
+        alert("Invalid password!")
+      }
+    }
   }
 
   return (
