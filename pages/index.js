@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import formStyles from '../styles/Form.module.css'
 import Signup from '../components/Signup'
 import Signin from '../components/Signin'
+import { useHistory } from "react-router-dom";
 
 export default function signUp() {
   const [accounts, setAccounts] = useState([])
@@ -39,8 +40,6 @@ export default function signUp() {
 
     const data = await res.json()
 
-    
-
     setAccounts([...accounts, account])
     alert('Account created!')
     switches()
@@ -55,18 +54,29 @@ export default function signUp() {
     })
 
     const accountList = await res.json()
-    console.log(accountList)
-    let userAccount = ""
+    let userAccount = {}
     userAccount = accountList.filter(existingAccount => existingAccount.username === account.username)
-    if (userAccount = "") {
-      alert("Invalid username!")
+    if (userAccount == "") {
+      alert("User not found!")
+      return
     } else {
-      if (userAccount.password == account.password) {
-        alert("Noice.")
+      if (userAccount[0].password == account.password) {
+        alert("Successfully logged in!")
+
+        goToProfile();
       } else {
         alert("Invalid password!")
       }
     }
+  }
+
+  const goToProfile = () => {
+    const history = useHistory();
+    const handleSignIn = () => {
+      history.push("/profile")
+    }
+
+    return handleSignIn
   }
 
   return (
