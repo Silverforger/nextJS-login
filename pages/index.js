@@ -5,16 +5,6 @@ import Signup from '../components/Signup'
 import Signin from '../components/Signin'
 import { useRouter } from 'next/router'
 
-function Redirect({to}) {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push(to)
-  }, [to])
-
-  return null;
-}
-
 export default function signUp() {
   const [accounts, setAccounts] = useState([])
   const [switchPage, setSwitchPage] = useState(false)
@@ -56,29 +46,31 @@ export default function signUp() {
   }
 
   const checkAccount = async (account) => {
-    const res = await fetch('http://localhost:5000/credentials', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-      }
-    })
+    // const res = await fetch('http://localhost:5000/credentials', {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //   }
+    // })
 
-    const accountList = await res.json()
-    let userAccount = {}
-    userAccount = accountList.filter(existingAccount => existingAccount.username === account.username)
-    if (userAccount == "") {
-      alert("User not found!")
-      return
-    } else {
-      if (userAccount[0].password == account.password) {
-        alert("Successfully logged in!")
-        return <Redirect to="/profile/" />
-      } else {
-        alert("Invalid password!")
-      }
-    }
+    // const accountList = await res.json()
+    // let userAccount = {}
+    // userAccount = accountList.filter(existingAccount => existingAccount.username === account.username)
+    // if (userAccount == "") {
+    //   alert("User not found!")
+    //   return
+    // } else {
+    //   if (userAccount[0].password == account.password) {
+    //     alert("Successfully logged in!")
+    //     goToProfile();
+    //   } else {
+    //     alert("Invalid password!")
+    //   }
+    // }
+
+    getServerSideProps(account)
   }
-
+  
   return (
     <div className={formStyles.center}>
       <div className={formStyles.formcontainer}>
@@ -88,13 +80,30 @@ export default function signUp() {
   )
 }
 
-// export const getStaticProps = async () => {
-//   const res = await fetch(`http://localhost:5000/credentials`)
-//   const accounts = await res.json()
+export async function getServerSideProps(context) {
+  const res = await fetch(`https://localhost:5000/credentials`)
+  const accountList = await res.json()
 
-//   return {
-//     props: {
-//       accounts
-//     }
-//   }
-// }
+  let userAccount = {}
+  userAccount = accountList.filter(existingAccount => existingAccount.username === account.username)
+  if (userAccount == "") {
+    alert("User not found!")
+    return
+  } else {
+    if (userAccount[0].password == account.password) {
+      alert("Successfully logged in!")
+      return {
+        redirect: {
+          destination: '/profile',
+          permanent: false,
+        },
+      }
+    } else {
+      alert("Invalid password!")
+    }
+  }
+
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
